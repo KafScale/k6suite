@@ -1,0 +1,216 @@
+{
+  "Title": "KAF6 Suite 20260117-123316",
+  "RunID": "20260117-123316",
+  "StartedAt": "2026-01-17T12:33:16.580228+01:00",
+  "Duration": 6116096083,
+  "Summary": {
+    "Status": "fail",
+    "Connectivity": "failed",
+    "Profiles": 2,
+    "Scenarios": 4,
+    "Failed": 2,
+    "Produced": 11,
+    "Consumed": 10,
+    "Errors": 2
+  },
+  "Groups": [
+    {
+      "ProfileID": "kafka-local",
+      "ProfileName": "Kafka Local",
+      "ProfileDescription": "Apache Kafka running locally on port 9092",
+      "ProfileMetricsURL": "",
+      "ProfileSource": "suite/profiles.json",
+      "Summary": {
+        "Status": "pass",
+        "Connectivity": "ok",
+        "Profiles": 0,
+        "Scenarios": 2,
+        "Failed": 0,
+        "Produced": 11,
+        "Consumed": 10,
+        "Errors": 0
+      },
+      "Results": [
+        {
+          "Name": "diagnose",
+          "Description": "S1 connectivity check using a single produce",
+          "RunID": "20260117-123316",
+          "Profile": "kafka-local",
+          "ProfileName": "Kafka Local",
+          "ProfileDescription": "Apache Kafka running locally on port 9092",
+          "ProfileSource": "suite/profiles.json",
+          "ProfileMetricsURL": "",
+          "ConnectivityStatus": "ok",
+          "ConnectivityError": "",
+          "RunError": "",
+          "Brokers": [
+            "127.0.0.1:9092"
+          ],
+          "Produced": 1,
+          "Consumed": 0,
+          "Errors": 0,
+          "ProduceP": {
+            "P50": 8,
+            "P95": 8,
+            "P99": 8
+          },
+          "ConsumeP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "ConsumePollP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "Checks": {
+            "produced_one": "pass"
+          },
+          "Duration": 2028975333,
+          "StartedAt": "2026-01-17T12:33:16.580228+01:00",
+          "Status": "pass"
+        },
+        {
+          "Name": "smoke",
+          "Description": "S3 single message smoke",
+          "RunID": "20260117-123318",
+          "Profile": "kafka-local",
+          "ProfileName": "Kafka Local",
+          "ProfileDescription": "Apache Kafka running locally on port 9092",
+          "ProfileSource": "suite/profiles.json",
+          "ProfileMetricsURL": "",
+          "ConnectivityStatus": "ok",
+          "ConnectivityError": "",
+          "RunError": "",
+          "Brokers": [
+            "127.0.0.1:9092"
+          ],
+          "Produced": 10,
+          "Consumed": 10,
+          "Errors": 0,
+          "ProduceP": {
+            "P50": 0,
+            "P95": 6.4999999999999964,
+            "P99": 10.1
+          },
+          "ConsumeP": {
+            "P50": 2026.5,
+            "P95": 2033.3,
+            "P99": 2035.46
+          },
+          "ConsumePollP": {
+            "P50": 21,
+            "P95": 21,
+            "P99": 21
+          },
+          "Checks": {
+            "delivered_all": "pass"
+          },
+          "Duration": 4086096250,
+          "StartedAt": "2026-01-17T12:33:18.609722+01:00",
+          "Status": "pass"
+        }
+      ]
+    },
+    {
+      "ProfileID": "local-service",
+      "ProfileName": "Local Service",
+      "ProfileDescription": "KafScale running as local service on port 39092",
+      "ProfileMetricsURL": "http://127.0.0.1:9093/metrics",
+      "ProfileSource": "suite/profiles.json",
+      "Summary": {
+        "Status": "fail",
+        "Connectivity": "failed",
+        "Profiles": 0,
+        "Scenarios": 2,
+        "Failed": 2,
+        "Produced": 0,
+        "Consumed": 0,
+        "Errors": 2
+      },
+      "Results": [
+        {
+          "Name": "diagnose",
+          "Description": "S1 connectivity check using a single produce",
+          "RunID": "20260117-123322",
+          "Profile": "local-service",
+          "ProfileName": "Local Service",
+          "ProfileDescription": "KafScale running as local service on port 39092",
+          "ProfileSource": "suite/profiles.json",
+          "ProfileMetricsURL": "http://127.0.0.1:9093/metrics",
+          "ConnectivityStatus": "fail",
+          "ConnectivityError": "dial tcp 127.0.0.1:39092: connect: connection refused",
+          "RunError": "connectivity check failed: dial tcp 127.0.0.1:39092: connect: connection refused",
+          "Brokers": [
+            "127.0.0.1:39092"
+          ],
+          "Produced": 0,
+          "Consumed": 0,
+          "Errors": 1,
+          "ProduceP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "ConsumeP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "ConsumePollP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "Checks": {
+            "produced_one": "fail"
+          },
+          "Duration": 125625,
+          "StartedAt": "2026-01-17T12:33:22.695969+01:00",
+          "Status": "fail"
+        },
+        {
+          "Name": "smoke",
+          "Description": "S3 single message smoke",
+          "RunID": "20260117-123322",
+          "Profile": "local-service",
+          "ProfileName": "Local Service",
+          "ProfileDescription": "KafScale running as local service on port 39092",
+          "ProfileSource": "suite/profiles.json",
+          "ProfileMetricsURL": "http://127.0.0.1:9093/metrics",
+          "ConnectivityStatus": "fail",
+          "ConnectivityError": "dial tcp 127.0.0.1:39092: connect: connection refused",
+          "RunError": "connectivity check failed: dial tcp 127.0.0.1:39092: connect: connection refused",
+          "Brokers": [
+            "127.0.0.1:39092"
+          ],
+          "Produced": 0,
+          "Consumed": 0,
+          "Errors": 1,
+          "ProduceP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "ConsumeP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "ConsumePollP": {
+            "P50": 0,
+            "P95": 0,
+            "P99": 0
+          },
+          "Checks": {
+            "delivered_all": "fail"
+          },
+          "Duration": 100375,
+          "StartedAt": "2026-01-17T12:33:22.69617+01:00",
+          "Status": "fail"
+        }
+      ]
+    }
+  ]
+}

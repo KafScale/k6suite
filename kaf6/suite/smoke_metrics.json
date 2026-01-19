@@ -1,0 +1,13 @@
+{
+  "name": "smoke_metrics",
+  "description": "S2 metrics endpoint health check",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "scenarios": {
+    "metrics": {
+      "type": "metrics",
+      "url": "http://127.0.0.1:9093/metrics"
+    }
+  },
+  "checks": []
+}

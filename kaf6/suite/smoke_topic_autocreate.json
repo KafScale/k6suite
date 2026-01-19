@@ -1,0 +1,46 @@
+{
+  "name": "smoke_topic_autocreate",
+  "description": "S3 topic auto-create and consume",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "smoke-autocreate-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 1,
+      "messages": 1,
+      "rate_per_s": 0,
+      "topic": "smoke-autocreate-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    },
+    "consumer": {
+      "type": "consume",
+      "clients": 1,
+      "group": {
+        "id": "smoke-autocreate-{{run_id}}"
+      },
+      "topic": "smoke-autocreate-{{run_id}}",
+      "offset": "earliest",
+      "limit": 1,
+      "timeout": "30s"
+    }
+  },
+  "checks": [
+    {
+      "name": "delivered_one",
+      "type": "count_equals",
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "smoke",
+  "description": "S3 single message smoke",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "smoke-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 1,
+      "messages": 10,
+      "rate_per_s": 0,
+      "topic": "smoke-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    },
+    "consumer": {
+      "type": "consume",
+      "clients": 1,
+      "group": {
+        "id": "smoke-group-{{run_id}}"
+      },
+      "topic": "smoke-{{run_id}}",
+      "offset": "earliest",
+      "limit": 10,
+      "timeout": "30s"
+    }
+  },
+  "checks": [
+    {
+      "name": "delivered_all",
+      "type": "count_equals",
+      "expected": 10
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "smoke_concurrent",
+  "description": "S3 concurrent producers and group consumer",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "smoke-concurrent-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 5,
+      "messages": 100,
+      "rate_per_s": 0,
+      "topic": "smoke-concurrent-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    },
+    "consumer": {
+      "type": "consume",
+      "clients": 1,
+      "group": {
+        "id": "smoke-concurrent-{{run_id}}"
+      },
+      "topic": "smoke-concurrent-{{run_id}}",
+      "offset": "earliest",
+      "limit": 100,
+      "timeout": "30s"
+    }
+  },
+  "checks": [
+    {
+      "name": "delivered_all",
+      "type": "count_equals",
+      "expected": 100
+    }
+  ]
+}

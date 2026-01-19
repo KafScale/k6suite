@@ -1,0 +1,46 @@
+{
+  "name": "smoke_consumer_group",
+  "description": "S3 group-based consume with explicit offsets",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "smoke-group-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 1,
+      "messages": 2,
+      "rate_per_s": 0,
+      "topic": "smoke-group-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    },
+    "consumer": {
+      "type": "consume",
+      "clients": 1,
+      "group": {
+        "id": "smoke-group-{{run_id}}"
+      },
+      "topic": "smoke-group-{{run_id}}",
+      "offset": "earliest",
+      "limit": 2,
+      "timeout": "30s"
+    }
+  },
+  "checks": [
+    {
+      "name": "delivered_all",
+      "type": "count_equals",
+      "expected": 2
+    }
+  ]
+}

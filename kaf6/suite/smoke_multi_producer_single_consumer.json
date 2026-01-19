@@ -1,0 +1,46 @@
+{
+  "name": "smoke_multi_producer_single_consumer",
+  "description": "S3 multi-producer with single group consumer",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "smoke-multi-prod-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 5,
+      "messages": 100,
+      "rate_per_s": 0,
+      "topic": "smoke-multi-prod-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    },
+    "consumer": {
+      "type": "consume",
+      "clients": 1,
+      "group": {
+        "id": "smoke-multi-prod-{{run_id}}"
+      },
+      "topic": "smoke-multi-prod-{{run_id}}",
+      "offset": "earliest",
+      "limit": 100,
+      "timeout": "30s"
+    }
+  },
+  "checks": [
+    {
+      "name": "delivered_all",
+      "type": "count_equals",
+      "expected": 100
+    }
+  ]
+}

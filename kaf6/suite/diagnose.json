@@ -1,0 +1,36 @@
+{
+  "name": "diagnose",
+  "description": "S1 connectivity check using a single produce",
+  "profile": "local-service",
+  "brokers": ["127.0.0.1:39092"],
+  "topics": [
+    {
+      "name": "diagnose-{{run_id}}",
+      "partitions": 1,
+      "recreate": true
+    }
+  ],
+  "scenarios": {
+    "producer": {
+      "type": "produce",
+      "clients": 1,
+      "messages": 1,
+      "rate_per_s": 0,
+      "topic": "diagnose-{{run_id}}",
+      "value": {
+        "json": {
+          "uuid": "{{uuid}}",
+          "ts": "{{now}}"
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "produced_one",
+      "type": "count_equals",
+      "metric": "produced",
+      "expected": 1
+    }
+  ]
+}
