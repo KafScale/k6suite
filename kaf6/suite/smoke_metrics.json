@@ -6,7 +6,7 @@
   "scenarios": {
     "metrics": {
       "type": "metrics",
-      "url": "http://127.0.0.1:9093/metrics"
+      "url": "http://127.0.0.1:39093/metrics"
     }
   },
   "checks": []

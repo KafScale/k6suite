@@ -11,6 +11,7 @@ User guides and manuals for the K6SUITE test framework.
 - [Architecture](architecture.md) - System design and components
 - [Compatibility Charter](compatibility.md) - What is in scope and what is not
 - [Release Checklist](release-checklist.md) - Release readiness steps
+- [v1.5.0 Smoketest](smoketest-v1.5.0.md) - KafScale v1.5.0 release validation
 - [Benchmark vs K6SUITE](k6suite-vs-benchmark-summary.md) - When to use which tool
 - [KAF6 Plan](kaf6-plan.md) - Franz-go based test orchestrator plan
 
@@ -19,6 +20,7 @@ User guides and manuals for the K6SUITE test framework.
 | I want to... | Go to... |
 |--------------|----------|
 | Run my first test | [Getting Started](getting-started.md) |
+| Run v1.5.0 release smoketest | [v1.5.0 Smoketest](smoketest-v1.5.0.md) |
 | Understand a specific test | [Test Reference](test-reference.md) |
 | Run tests against different environments | [Execution Profiles](profiles.md) |
 | Review coverage gaps | [Test Coverage Report](test-coverage-report.md) |

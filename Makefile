@@ -22,7 +22,7 @@ K6_PROFILE ?= local-service
 K6_TARGET ?= kafscale
 .DEFAULT_GOAL := help
 
-.PHONY: help k6-select k6-diagnose k6-smoke-single k6-smoke-concurrent k6-smoke-shared k6-smoke-topic-autocreate k6-smoke-consumer-group k6-smoke-multi-producer-single-consumer k6-smoke-metrics k6-suite
+.PHONY: help k6-select k6-diagnose k6-smoke-single k6-smoke-concurrent k6-smoke-shared k6-smoke-topic-autocreate k6-smoke-consumer-group k6-smoke-multi-producer-single-consumer k6-smoke-metrics k6-smoke-acl-basic k6-suite smoketest-v1.5.0
 
 help:
 	@echo "Targets:"
@@ -35,7 +35,9 @@ help:
 	@echo "  k6-smoke-consumer-group          - Run smoke_consumer_group.js"
 	@echo "  k6-smoke-multi-producer-single-consumer - Run smoke_multi_producer_single_consumer.js"
 	@echo "  k6-smoke-metrics                 - Run smoke_metrics.js"
+	@echo "  k6-smoke-acl-basic               - Run smoke_acl_basic.js (v1.5.0 ACL)"
 	@echo "  k6-suite                         - Run all k6 smoke tests"
+	@echo "  smoketest-v1.5.0                 - Run v1.5.0 release smoketest suite"
 
 k6-diagnose:
 	K6_PROFILE=$(K6_PROFILE) K6_TARGET=$(K6_TARGET) $(K6_BIN) run tests/k6/diagnose.js
@@ -64,6 +66,9 @@ k6-smoke-multi-producer-single-consumer:
 k6-smoke-metrics:
 	K6_PROFILE=$(K6_PROFILE) K6_TARGET=$(K6_TARGET) $(K6_BIN) run tests/k6/smoke_metrics.js
 
+k6-smoke-acl-basic:
+	K6_PROFILE=$(K6_PROFILE) K6_TARGET=$(K6_TARGET) $(K6_BIN) run tests/k6/smoke_acl_basic.js
+
 k6-suite:
 	$(MAKE) k6-diagnose
 	$(MAKE) k6-smoke-metrics
@@ -73,3 +78,6 @@ k6-suite:
 	$(MAKE) k6-smoke-topic-autocreate
 	$(MAKE) k6-smoke-consumer-group
 	$(MAKE) k6-smoke-multi-producer-single-consumer
+
+smoketest-v1.5.0:
+	K6_BIN=$(K6_BIN) K6_PROFILE=$(K6_PROFILE) K6_TARGET=$(K6_TARGET) ./scripts/smoketest_v1.5.0.sh

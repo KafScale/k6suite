@@ -105,7 +105,7 @@ Example `profiles.json`:
       "name": "Local Service",
       "description": "KafScale running as a local service",
       "brokers": ["127.0.0.1:39092"],
-      "metrics_url": "http://127.0.0.1:9093/metrics"
+      "metrics_url": "http://127.0.0.1:39093/metrics"
     }
   }
 }

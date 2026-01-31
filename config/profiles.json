@@ -6,7 +6,7 @@
       "description": "KafScale running in Docker via docker-compose",
       "brokers": ["127.0.0.1:9092"],
       "kafscale": {
-        "metricsUrl": "http://127.0.0.1:9093/metrics"
+        "metricsUrl": "http://127.0.0.1:39093/metrics"
       }
     },
     "local-service": {
@@ -14,7 +14,7 @@
       "description": "KafScale running as local service on port 39092",
       "brokers": ["127.0.0.1:39092"],
       "kafscale": {
-        "metricsUrl": "http://127.0.0.1:9093/metrics"
+        "metricsUrl": "http://127.0.0.1:39093/metrics"
       }
     },
     "k8s-local": {
@@ -22,7 +22,7 @@
       "description": "KafScale in local Kubernetes cluster",
       "brokers": ["127.0.0.1:39092"],
       "kafscale": {
-        "metricsUrl": "http://127.0.0.1:9093/metrics"
+        "metricsUrl": "http://127.0.0.1:39093/metrics"
       }
     },
     "kafka-local": {

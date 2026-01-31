@@ -5,7 +5,7 @@
       "name": "Local Service",
       "description": "KafScale running as local service on port 39092",
       "brokers": ["127.0.0.1:39092"],
-      "metrics_url": "http://127.0.0.1:9093/metrics"
+      "metrics_url": "http://127.0.0.1:39093/metrics"
     },
     "kafka-local": {
       "name": "Kafka Local",
