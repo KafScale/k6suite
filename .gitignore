@@ -215,3 +215,6 @@ __marimo__/
 .DS_Store
 .idea/
 .vscode/
+
+# Kaf6Suite
+/kaf6/reports
