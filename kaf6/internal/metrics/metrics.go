@@ -29,8 +29,8 @@ type Summary struct {
 	Consumed int64
 	Errors   int64
 
-	ProduceLatencies []time.Duration
-	ConsumeLatencies []time.Duration
+	ProduceLatencies     []time.Duration
+	ConsumeLatencies     []time.Duration
 	ConsumePollLatencies []time.Duration
 
 	mu sync.Mutex
